@@ -1,0 +1,25 @@
+<div class="container text-center mt-3">
+  <h4>{{text}}</h4>
+  <form action="/" method="POST">
+    <div>
+      <a class="btn btn-info col-4 my-1" href="/">
+        GET '/'
+      </a>
+    </div>
+    <div>
+      <a class="btn btn-info col-4 my-1" href="/new">
+        GET '/new'
+      </a>
+    </div>
+    <div>
+      <a class="btn btn-info col-4 my-1" href="/{{id}}">
+        GET '/:id'
+      </a>
+    </div>
+    <div>
+      <button class="btn btn-info col-4 my-1" type="submit">
+        POST '/''
+      </button>
+    </div>
+  </form>
+</div>
