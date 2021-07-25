@@ -9,8 +9,12 @@ app.use(express.static('public'))
 
 app.use(function (req, res, next) {
   let timeStart = new Date()
-  timeStart = timeStart.toLocaleString('zh-TW', { hour12: false })
-  console.log(timeStart, '|', req.method, 'from', req.originalUrl)
+  res.on('finish', () => {
+    let timeEnd = new Date()
+    let costTime = timeEnd.getTime() - timeStart.getTime()
+    timeStart = timeStart.toLocaleString('zh-TW', { hour12: false })
+    console.log(timeStart, '|', req.method, 'from', req.originalUrl, '| total time:', costTime, 'ms')
+  })
   next()
 });
 
