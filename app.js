@@ -12,7 +12,10 @@ app.use(function (req, res, next) {
   res.on('finish', () => {
     let timeEnd = new Date()
     let costTime = timeEnd.getTime() - timeStart.getTime()
-    timeStart = timeStart.toLocaleString('zh-TW', { hour12: false })
+    timeStart = timeStart.toLocaleString('zh-TW', { hour12: false }) + '.' + timeStart.getUTCMilliseconds().toString()
+    timeEnd = timeEnd.toLocaleString('zh-TW', { hour12: false }) + '.' + timeEnd.getUTCMilliseconds().toString()
+    console.log('Request Time:', timeStart)
+    console.log('Respond Time:', timeEnd)
     console.log(timeStart, '|', req.method, 'from', req.originalUrl, '| total time:', costTime, 'ms')
   })
   next()
